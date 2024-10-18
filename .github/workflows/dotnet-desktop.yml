@@ -66,7 +66,7 @@ jobs:
         run: |
           msbuild .\CalculatorLibrary.sln  /t:clean /p:Configuration=Debug
           nuget restore .\CalculatorLibrary.sln
-          msbuild .\CalculatorLibrary.sln  /t:build /p:Configuration=Debug
+          msbuild .\CalculatorLibrary.sln
      
       - name: Setup VSTest and add to PATH
         uses: darenm/Setup-VSTest@v1
@@ -74,5 +74,5 @@ jobs:
 
       - name: Test Add
         id: run_vstest
-        working-directory: CalcLibTest\CalcLibTest\bin\Debug\net8.0
-        run: vstest.console.exe CalcLibTest.dll /Tests:TestMethod1
+        working-directory: CalcLibTest/bin/Debug/net8.0
+        run: CalcLibTest/bin/Debug/net8.0/testhost.exe
